@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wheather Widget</title>
+</head>
+<style>
+
+  body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #42275a, #734b6d);
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    background: url('assets/img/line.png') no-repeat left;
+    background-size: 60%;
+  }
+
+  .minimal {transform: translateX(84%);}
+
+  .w-container {
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 200px;
+  }
+
+  .w-container__box {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: fixed;
+    background: rgb(51,51,51);
+    background: linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(77,77,77,1) 25%, rgba(101,101,101,1) 50%, rgba(77,77,77,1) 75%, rgba(51,51,51,1) 100%);
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    right: 0;
+    top: 30px;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 5px;
+    opacity: 0.6;
+    transition: all .3s ease-in-out;
+    box-shadow: 8px 4px 8px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+  }
+
+  .w-container__box p {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    border-bottom: solid 1.5px yellow;
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(white));
+    transition: 3s;
+  }
+
+  .w-container__box p:hover {
+    cursor: default;
+    color: white;
+  }
+
+  .w-container__box:hover {
+    transform: translateX(0%);
+    opacity: 0.9;
+    box-shadow: 8px 4px 8px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .w-container__box_eye {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    transition: 1s;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+
+  .w-container__box_eye:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+  }
+
+  .w-container__box_btn-optional {
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    transition: 1s;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+  }
+
+  .unvisible {display: none;}
+
+  .w-container__box_btn-optional:hover {
+    cursor: pointer;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+  }
+
+  .w-container__box_optional {
+    position: absolute;
+    right: 5px;
+    top: 32px;
+    color: white;
+    font-size: 12px;
+  }
+
+  .w-container__box h3 {
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.2, transparent), to(white));
+    color: black;
+    transition: 3s;
+  }
+
+  .w-container__box h3:hover {
+    color: white;
+    cursor: default;
+  }
+
+  .w-container__box_loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80px;
+  }
+
+
+</style>
+<body>
+
+  <div class="container"></div>
+
+  <script src="index.js"></script>
+  <script> WheatherPlugin.start();</script>
+  
+</body>
+</html>
