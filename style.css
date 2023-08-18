@@ -108,6 +108,12 @@
     font-size: 12px;
   }
 
+  .w-container__box_optional span {
+    color: yellow;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+  }
+
   .w-container__box h3 {
     -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.2, transparent), to(white));
     color: black;
@@ -128,4 +134,3 @@
     margin: auto;
     width: 80px;
   }
-

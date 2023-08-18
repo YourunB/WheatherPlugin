@@ -60,7 +60,7 @@ const WheatherPlugin = (function () {
       btnOptional.classList.add("w-container__box_btn-optional");
       btnOptional.src = "assets/img/temp.svg";
       btnOptional.alt = "Термометр";
-      btnOptional.title = "Открыть температуры";
+      btnOptional.title = "Погода на 3 дня";
       btnOptional.addEventListener("click", () => {
         loadImage.classList.remove("unvisible");
         fetchAsyncOptional();
@@ -78,7 +78,6 @@ const WheatherPlugin = (function () {
           await delay(0);
           const response = await fetch(apiUrl);
           const data = await response.json();
-          //console.log("Wheather:", data);
           temp.textContent = (data.main.temp).toFixed(1) + " °";
           info.textContent = "Погода (" + data.name + "): " + data.weather[0].description + ", ветер: " + (data.wind.speed).toFixed(1) + " м/с";
           wheatherImage.src = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"; 
@@ -88,7 +87,7 @@ const WheatherPlugin = (function () {
       }
 
 
-      const apiUrlOptional = "http://api.openweathermap.org/data/2.5/weather?q="+ this.city + "&appid=8df969c981b9d89adc75be353e575c89&lang=ru&units=metric";
+      const apiUrlOptional = "http://api.openweathermap.org/data/2.5/forecast?q="+ this.city + "&appid=8df969c981b9d89adc75be353e575c89&lang=ru&units=metric";
 
       async function fetchAsyncOptional() {
         try {
@@ -96,7 +95,7 @@ const WheatherPlugin = (function () {
           loadImage.classList.add("unvisible");
           const response = await fetch(apiUrlOptional);
           const data = await response.json();
-          wheatherOptional.textContent = "макс:" + (data.main.temp_max).toFixed(1) +"° " + "мин:" + (data.main.temp_min).toFixed(1) + "°";
+          wheatherOptional.innerHTML = (data.list[11].dt_txt).slice(0,10) + ":" + "<span>" + (data.list[11].main.temp).toFixed(1) + "° " + "</span>" + (data.list[19].dt_txt).slice(0,10) + ": <span>" + (data.list[19].main.temp).toFixed(1) + "°</span>" + (data.list[27].dt_txt).slice(0,10) + ": <span>" + (data.list[27].main.temp).toFixed(1) + "°</span>";
           console.log("Wheather optional:", data);
         } catch (error) {
           console.error("Error: ", error);
@@ -114,4 +113,3 @@ const WheatherPlugin = (function () {
 
   }
 })();
-
