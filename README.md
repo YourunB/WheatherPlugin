@@ -1,1 +1,1 @@
-https://yourunb.github.io/WheatherPlugin/
+Project link: https://yourunb.github.io/WheatherPlugin/
